@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>QIANONIHBOS ULTRA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at center, #050000, #000);
+      font-family: 'Orbitron', sans-serif;
+      overflow: hidden;
+    }.button {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #330000, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 0 20px red;
+  transition: 0.2s;
+}
+
+.button:active {
+  transform: scale(0.9);
+  box-shadow: 0 0 60px red, inset 0 0 30px red;
+}
+
+.ring, .ring2, .ring3 {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid red;
+  animation: pulse 2s infinite;
+}
+
+.ring { width: 240px; height: 240px; }
+.ring2 { width: 270px; height: 270px; animation-delay: 0.5s; }
+.ring3 { width: 300px; height: 300px; animation-delay: 1s; }
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  70% { transform: scale(1.3); opacity: 0; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+.text {
+  position: absolute;
+  color: red;
+  font-size: 32px;
+  letter-spacing: 4px;
+  opacity: 0;
+  transform: scale(0.3) rotateY(180deg);
+  text-shadow: 0 0 10px red, 0 0 30px red, 0 0 60px red;
+}
+
+.show {
+  opacity: 1;
+  transform: scale(1) rotateY(0deg);
+  animation: glitch 0.3s, flicker 1s infinite;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  25% { transform: translate(-3px, 3px); }
+  50% { transform: translate(3px, -3px); }
+  75% { transform: translate(-3px, -3px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+  70% { opacity: 1; }
+  80% { opacity: 0.4; }
+}
+
+.scan-line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: red;
+  top: 0;
+  animation: scan 2s linear infinite;
+  opacity: 0.4;
+}
+
+@keyframes scan {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
+
+  </style>
+</head>
+<body>  <div class="button" onclick="showText()">
+    <div class="ring"></div>
+    <div class="ring2"></div>
+    <div class="ring3"></div>
+    <div class="scan-line"></div>
+  </div>  <div id="text" class="text">QIANONIHBOS</div>  <script>
+    function showText() {
+      const text = document.getElementById('text');
+      text.classList.toggle('show');
+    }
+  </script></body>
+</html>
